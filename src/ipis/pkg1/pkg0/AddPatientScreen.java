@@ -269,7 +269,7 @@ public class AddPatientScreen extends javax.swing.JFrame {
         
         if(!fname.isEmpty() && !lname.isEmpty() && !mi.isEmpty() && !sex.isEmpty() && !city.trim().isEmpty()){
          
-            if(fname.matches("[a-zA-Z ]+") && lname.matches("[a-zA-Z ]+") && mi.matches("[a-zA-Z]") && tempmonth.matches("[0-9]+") && tempday.matches("[0-9]+") && tempyear.matches("[0-9]+") && city.matches("[a-zA-Z ]+")){
+            if(fname.matches("[a-zA-Z.Ññé ]+") && lname.matches("[a-zA-Z.Ññé ]+") && mi.matches("[a-zA-Z]") && tempmonth.matches("[0-9]+") && tempday.matches("[0-9]+") && tempyear.matches("[0-9]+") && city.matches("[a-zA-Z.Ññé ]+")){
                 
                 DAOIntf di = new DAOImpl();
                 ArrayList<Patient> allPatients = di.getAllPatients();
@@ -355,10 +355,10 @@ public class AddPatientScreen extends javax.swing.JFrame {
                 String warny = "";
                 String warnc = "";
                 
-                if(!fname.matches("[a-zA-Z ]+")){
+                if(!fname.matches("[a-zA-Z.Ññé ]+")){
                     warnf = " First name";
                 }
-                if(!lname.matches("[a-zA-Z ]+")){
+                if(!lname.matches("[a-zA-Z.Ññé ]+")){
                     warnl = " Last name";
                 }
                 if(!mi.matches("[a-zA-Z]")){
@@ -373,7 +373,7 @@ public class AddPatientScreen extends javax.swing.JFrame {
                 if(!tempyear.matches("[0-9]+")){
                     warny = " Year";
                 }
-                if(!city.matches("[a-zA-Z ]+")){
+                if(!city.matches("[a-zA-Z.Ññé ]+")){
                     warnc = " City";
                 }
                 
