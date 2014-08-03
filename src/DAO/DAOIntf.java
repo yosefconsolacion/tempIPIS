@@ -18,4 +18,8 @@ public interface DAOIntf {
     public void removePatient(int id);
     
     public ArrayList<Patient> getAllPatients();
+    
+    public Patient getPatient(int id);
+    
+    public void editPatient(int id, Patient newData);
 }

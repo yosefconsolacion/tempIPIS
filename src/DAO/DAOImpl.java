@@ -45,7 +45,7 @@ public class DAOImpl implements DAOIntf {
         try {
             Connection conn = new Connector().getConnection();
             
-            String query = "DELETE FROM Patient WHERE id = ?";
+            String query = "DELETE FROM Patient WHERE chartno = ?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -83,6 +83,54 @@ public class DAOImpl implements DAOIntf {
             Logger.getLogger(DAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public Patient getPatient(int id) {
+        try {
+            Connection conn = new Connector().getConnection();
+            
+            String query = "SELECT * FROM Patient WHERE chartno = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            Patient p = new Patient();
+            if(rs.next()) {
+                p.setId(rs.getInt(1));
+                p.setLname(rs.getString(2));
+                p.setFname(rs.getString(3));
+                p.setMi(rs.getString(4));
+                p.setSex(rs.getString(5));
+                p.setBirthday(rs.getString(6));
+                p.setCity(rs.getString(7));
+            }
+            
+            return p;
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public void editPatient(int id, Patient newData) {
+        try {
+            Connection conn = new Connector().getConnection();
+            
+            String query = "UPDATE PATIENT SET lname = ?, fname = ?, mi = ?, sex = ?, birthday = ?, city = ? WHERE chartno = ?;";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, newData.getLname());
+            ps.setString(2, newData.getFname());
+            ps.setString(3, newData.getMi());
+            ps.setString(4, newData.getSex());
+            ps.setString(5, newData.getBirthday());
+            ps.setString(6, newData.getCity());
+            ps.setInt(7, id);
+            
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
