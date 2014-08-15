@@ -1,98 +1,146 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Bean;
+
+import java.util.Calendar;
 
 /**
  *
- * @author Jarrette
+ * @author Jeffrey
  */
 public class Patient {
     
-    private int id;
-    private String lname;
-    private String fname;
-    private String mi;
+    private int patientid;
+    private int chartno;
+    private String fullname;
+    private Calendar birthday;
     private String sex;
-    private String birthday;
-    private String city;
+    private String address;
+    private String philhealth;
+    private Calendar dateAdmitted;
+    private String physician;
+    private String diagnosis;
+    private String room;
+    private String remarks;
 
-    public Patient() {
     
+    public int getPatientid() {
+        return patientid;
     }
 
-    public Patient(int id, String lname, String fname, String mi, String sex, String birthday) {
-        this.id = id;
-        this.lname = lname;
-        this.fname = fname;
-        this.mi = mi;
-        this.sex = sex;
+    
+    public void setPatientid(int patientid) {
+        this.patientid = patientid;
+    }
+
+    
+    public int getChartno() {
+        return chartno;
+    }
+
+    
+    public void setChartno(int chartno) {
+        this.chartno = chartno;
+    }
+
+    
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    
+    public Calendar getBirthday() {
+        return birthday;
+    }
+
+    
+    public void setBirthday(Calendar birthday) {
         this.birthday = birthday;
     }
 
-    public String getLname() {
-        return lname;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
+    
     public String getSex() {
         return sex;
     }
 
-    public String getMi() {
-        return mi;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public void setMi(String mi) {
-        this.mi = mi;
-    }
-
+    
     public void setSex(String sex) {
         this.sex = sex;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the city
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * @param city the city to set
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
     
+    public String getAddress() {
+        return address;
+    }
+
+    
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    
+    public String getPhilhealth() {
+        return philhealth;
+    }
+
+    
+    public void setPhilhealth(String philhealth) {
+        this.philhealth = philhealth;
+    }
+
+    
+    public Calendar getDateAdmitted() {
+        return dateAdmitted;
+    }
+
+    
+    public void setDateAdmitted(Calendar dateAdmitted) {
+        this.dateAdmitted = dateAdmitted;
+    }
+
+    
+    public String getPhysician() {
+        return physician;
+    }
+
+    
+    public void setPhysician(String physician) {
+        this.physician = physician;
+    }
+
+    
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    
+    public String getRoom() {
+        return room;
+    }
+
+    
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    
+    public String getRemarks() {
+        return remarks;
+    }
+
+    
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }
