@@ -28,11 +28,11 @@ public class DAOImpl implements DAOIntf {
         try {
             Connection conn = new Connector().getConnection();
             
-            String query = "INSERT INTO Patient (chartno, fullname, birthday, sex, address, philhealth, dateadmitted, physician, diagnosis, room, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Patient (chartno, fullname, birthday, sex, address, philhealth, dateadmitted, physician, diagnosis, room, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, p.getChartno());
             ps.setString(2, p.getFullname());
-            ps.setDate(3, new java.sql.Date(p.getBirthday().getTime().getTime())); // convert to Date object
+            ps.setInt(3, p.getBirthday()); // convert to Date object
             ps.setString(4, p.getSex());
             ps.setString(5, p.getAddress());
             ps.setString(6, p.getPhilhealth());
@@ -78,14 +78,12 @@ public class DAOImpl implements DAOIntf {
                 p.setPatientid(rs.getInt(1));
                 p.setChartno(rs.getInt(2));
                 p.setFullname(rs.getString(3));
-                Date d = rs.getDate(4);
-                Calendar c = new GregorianCalendar();
-                c.setTimeInMillis(d.getTime());
-                p.setBirthday(c);
+                p.setBirthday(rs.getInt(4));
                 p.setSex(rs.getString(5));
                 p.setAddress(rs.getString(6));
                 p.setPhilhealth(rs.getString(7));
-                d = rs.getDate(8);
+                Date d = rs.getDate(8);
+                Calendar c = new GregorianCalendar();
                 c.setTimeInMillis(d.getTime());
                 p.setDateAdmitted(c);
                 p.setPhysician(rs.getString(9));
@@ -117,14 +115,12 @@ public class DAOImpl implements DAOIntf {
                 p.setPatientid(rs.getInt(1));
                 p.setChartno(rs.getInt(2));
                 p.setFullname(rs.getString(3));
-                Date d = rs.getDate(4);
-                Calendar c = new GregorianCalendar();
-                c.setTimeInMillis(d.getTime());
-                p.setBirthday(c);
+                p.setBirthday(rs.getInt(4));
                 p.setSex(rs.getString(5));
                 p.setAddress(rs.getString(6));
                 p.setPhilhealth(rs.getString(7));
-                d = rs.getDate(8);
+                Calendar c = new GregorianCalendar();
+                Date d = rs.getDate(8);
                 c.setTimeInMillis(d.getTime());
                 p.setDateAdmitted(c);
                 p.setPhysician(rs.getString(9));
@@ -149,7 +145,7 @@ public class DAOImpl implements DAOIntf {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, newData.getChartno());
             ps.setString(2, newData.getFullname());
-            ps.setDate(3, new java.sql.Date(newData.getBirthday().getTime().getTime())); // convert to Date object
+            ps.setInt(3, newData.getBirthday());
             ps.setString(4, newData.getSex());
             ps.setString(5, newData.getAddress());
             ps.setString(6, newData.getPhilhealth());

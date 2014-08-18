@@ -15,7 +15,7 @@ public class Patient {
     private int patientid;
     private int chartno;
     private String fullname;
-    private Calendar birthday;
+    private int birthday;   // birthyear
     private String sex;
     private String address;
     private String philhealth;
@@ -55,12 +55,12 @@ public class Patient {
     }
 
     
-    public Calendar getBirthday() {
+    public int getBirthday() {
         return birthday;
     }
 
     
-    public void setBirthday(Calendar birthday) {
+    public void setBirthday(int birthday) {
         this.birthday = birthday;
     }
 

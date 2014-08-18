@@ -20,7 +20,7 @@ public class Connector {
     
     private String username = "";
     private String password = "";
-    private String url = "jdbc:mysql://localhost:3306/mydb";	// please insert db name here, and modify port if needed
+    private String url = "jdbc:mysql://localhost:3306/orangedb";	// please insert db name here, and modify port if needed
     private String driver = "com.mysql.jdbc.Driver";
     
     // init code
