@@ -22,4 +22,6 @@ public interface DAOIntf {
     public Patient getPatient(int id);
     
     public void editPatient(int id, Patient newData);
+    
+    public ArrayList<Patient> searchPatientName(String subStr);
 }

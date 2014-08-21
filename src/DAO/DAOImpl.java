@@ -28,19 +28,20 @@ public class DAOImpl implements DAOIntf {
         try {
             Connection conn = new Connector().getConnection();
             
-            String query = "INSERT INTO Patient (chartno, fullname, birthday, sex, address, philhealth, dateadmitted, physician, diagnosis, room, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Patient (chartno, fullname, birthday, sex, address, philhealth, dateadmitted, physician, diagnosis, room, remarks, priority) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, p.getChartno());
             ps.setString(2, p.getFullname());
-            ps.setInt(3, p.getBirthday()); // convert to Date object
+            ps.setInt(3, p.getBirthday()); 
             ps.setString(4, p.getSex());
             ps.setString(5, p.getAddress());
             ps.setString(6, p.getPhilhealth());
-            ps.setDate(7, new java.sql.Date(p.getDateAdmitted().getTime().getTime()));
+            ps.setString(7, p.getDateAdmitted());
             ps.setString(8, p.getPhysician());
             ps.setString(9, p.getDiagnosis());
             ps.setString(10, p.getRoom());
             ps.setString(11, p.getRemarks());
+            ps.setString(12, p.getPriority());
             
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -82,14 +83,12 @@ public class DAOImpl implements DAOIntf {
                 p.setSex(rs.getString(5));
                 p.setAddress(rs.getString(6));
                 p.setPhilhealth(rs.getString(7));
-                Date d = rs.getDate(8);
-                Calendar c = new GregorianCalendar();
-                c.setTimeInMillis(d.getTime());
-                p.setDateAdmitted(c);
+                p.setDateAdmitted(rs.getString(8));
                 p.setPhysician(rs.getString(9));
                 p.setDiagnosis(rs.getString(10));
                 p.setRoom(rs.getString(11));
                 p.setRemarks(rs.getString(12));
+                p.setPriority(rs.getString(13));
                 
                 lahatPatient.add(p);
             }
@@ -119,14 +118,12 @@ public class DAOImpl implements DAOIntf {
                 p.setSex(rs.getString(5));
                 p.setAddress(rs.getString(6));
                 p.setPhilhealth(rs.getString(7));
-                Calendar c = new GregorianCalendar();
-                Date d = rs.getDate(8);
-                c.setTimeInMillis(d.getTime());
-                p.setDateAdmitted(c);
+                p.setDateAdmitted(rs.getString(8));
                 p.setPhysician(rs.getString(9));
                 p.setDiagnosis(rs.getString(10));
                 p.setRoom(rs.getString(11));
                 p.setRemarks(rs.getString(12));
+                p.setPriority(rs.getString(13));
             }
             
             return p;
@@ -141,7 +138,7 @@ public class DAOImpl implements DAOIntf {
         try {
             Connection conn = new Connector().getConnection();
             
-            String query = "UPDATE PATIENT SET chartno = ?, fullname = ?, birthday = ?, sex = ?, address = ?, philhealth = ?, dateadmitted = ?, physician = ?, diagnosis = ?, room = ?, remarks = ? WHERE patientid = ?;";
+            String query = "UPDATE PATIENT SET chartno = ?, fullname = ?, birthday = ?, sex = ?, address = ?, philhealth = ?, dateadmitted = ?, physician = ?, diagnosis = ?, room = ?, remarks = ?, priority = ? WHERE patientid = ?;";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, newData.getChartno());
             ps.setString(2, newData.getFullname());
@@ -149,17 +146,29 @@ public class DAOImpl implements DAOIntf {
             ps.setString(4, newData.getSex());
             ps.setString(5, newData.getAddress());
             ps.setString(6, newData.getPhilhealth());
-            ps.setDate(7, new java.sql.Date(newData.getDateAdmitted().getTime().getTime()));
+            ps.setString(7, newData.getDateAdmitted());
             ps.setString(8, newData.getPhysician());
             ps.setString(9, newData.getDiagnosis());
             ps.setString(10, newData.getRoom());
             ps.setString(11, newData.getRemarks());
-            ps.setInt(12, newData.getPatientid());
+            ps.setString(12, newData.getPriority());
+            ps.setInt(13, newData.getPatientid());
             
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public ArrayList<Patient> searchPatientName(String subStr) {
+        ArrayList<Patient> allPatients = getAllPatients();
+        ArrayList<Patient> matches = new ArrayList<>();
+        for(int i = 0; i < allPatients.size(); i++) {
+            if(allPatients.get(i).getFullname().toLowerCase().contains(subStr.toLowerCase()))
+                matches.add(allPatients.get(i));
+        }
+        return matches;
     }
     
     
