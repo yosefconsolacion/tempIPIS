@@ -17,14 +17,14 @@ import DAO.DAOIntf;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Vector;
+import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 public class MainUI extends javax.swing.JFrame {
 
@@ -211,13 +211,9 @@ public class MainUI extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         jComboBox30 = new javax.swing.JComboBox();
         NewPatientUI = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -225,18 +221,10 @@ public class MainUI extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jTextField3 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jComboBox4 = new javax.swing.JComboBox();
-        jComboBox5 = new javax.swing.JComboBox();
-        jComboBox6 = new javax.swing.JComboBox();
-        jComboBox7 = new javax.swing.JComboBox();
-        jComboBox8 = new javax.swing.JComboBox();
-        jComboBox9 = new javax.swing.JComboBox();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -249,6 +237,8 @@ public class MainUI extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jComboBox29 = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
         DailyCensusUI = new javax.swing.JPanel();
         jComboBox26 = new javax.swing.JComboBox();
         jComboBox27 = new javax.swing.JComboBox();
@@ -578,25 +568,12 @@ public class MainUI extends javax.swing.JFrame {
 
         OldPatientsUI.setLayout(new java.awt.CardLayout());
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField6FocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField6FocusLost(evt);
-            }
-        });
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField6KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField6KeyReleased(evt);
             }
         });
 
@@ -814,9 +791,6 @@ public class MainUI extends javax.swing.JFrame {
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button_Edit.png"))); // NOI18N
         jLabel40.setText("jLabel23");
         jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel40MouseReleased(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel40MouseEntered(evt);
             }
@@ -825,6 +799,9 @@ public class MainUI extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel40MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel40MouseReleased(evt);
             }
         });
 
@@ -1053,14 +1030,11 @@ public class MainUI extends javax.swing.JFrame {
 
         MainPanel.add(OldPatientsUI, "card4");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel11.setText("Chart No.");
-
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(64, 64, 64));
         jLabel12.setText("Name");
 
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
@@ -1072,29 +1046,50 @@ public class MainUI extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel13.setText("Date of Birth");
+        jLabel13.setText("Year of Birth");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DD", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "YYYY" }));
+        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "YYYY", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930", "1929", "1928", "1927", "1926", "1925", "1924", "1923", "1922", "1921", "1920", "1919", "1918", "1917", "1916", "1915", "1914", "1913", "1912", "1911", "1910", "1909", "1908", "1907", "1906", "1905", "1904", "1903", "1902", "1901", "1900" }));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(64, 64, 64));
         jLabel14.setText("Sex");
 
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton1.setText("Male");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
+        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton2.setText("Female");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(64, 64, 64));
         jLabel15.setText("Address");
 
+        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton3.setText("Manila");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
+        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton4.setText("Other");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(64, 64, 64));
@@ -1104,6 +1099,7 @@ public class MainUI extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(64, 64, 64));
         jLabel17.setText("Date|Time Admitted");
 
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField4FocusGained(evt);
@@ -1113,21 +1109,7 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel18.setText("|");
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DD", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "YYYY" }));
-
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "HH", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MM", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "AM", "PM" }));
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(64, 64, 64));
@@ -1141,9 +1123,21 @@ public class MainUI extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(64, 64, 64));
         jLabel21.setText("Room");
 
+        jRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton5.setText(" MICU");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
 
+        jRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton6.setText("Ward");
+        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(64, 64, 64));
@@ -1172,11 +1166,7 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Button_OK.png"))); // NOI18N
-        jLabel24.setText("jLabel23");
         jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel24MouseReleased(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel24MouseClicked(evt);
             }
@@ -1189,104 +1179,100 @@ public class MainUI extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel24MousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel24MouseReleased(evt);
+            }
         });
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(64, 64, 64));
         jLabel46.setText("Priority Level");
 
+        jComboBox29.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox29.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "High", "CRITICAL" }));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton1.setText("Use Current Time");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PH MEMBER", "PH DEPENDENT", "NON-PH", "INDIGENT" }));
 
         javax.swing.GroupLayout NewPatientUILayout = new javax.swing.GroupLayout(NewPatientUI);
         NewPatientUI.setLayout(NewPatientUILayout);
         NewPatientUILayout.setHorizontalGroup(
             NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NewPatientUILayout.createSequentialGroup()
-                .addGap(463, 463, 463)
                 .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NewPatientUILayout.createSequentialGroup()
-                        .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16))
-                        .addGap(61, 61, 61)
-                        .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(NewPatientUILayout.createSequentialGroup()
-                                .addComponent(jRadioButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton4))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(NewPatientUILayout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addGap(26, 26, 26)
-                                .addComponent(jRadioButton2))
-                            .addGroup(NewPatientUILayout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(NewPatientUILayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(NewPatientUILayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(522, 522, 522)
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
+                        .addGap(59, 59, 59)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(NewPatientUILayout.createSequentialGroup()
+                        .addGap(455, 455, 455)
                         .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel46))
-                        .addGap(18, 18, 18)
-                        .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(NewPatientUILayout.createSequentialGroup()
-                                .addComponent(jRadioButton5)
+                                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16))
+                                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(NewPatientUILayout.createSequentialGroup()
+                                        .addGap(61, 61, 61)
+                                        .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(NewPatientUILayout.createSequentialGroup()
+                                                .addComponent(jRadioButton3)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jRadioButton4))
+                                            .addGroup(NewPatientUILayout.createSequentialGroup()
+                                                .addComponent(jRadioButton1)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jRadioButton2))
+                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(NewPatientUILayout.createSequentialGroup()
+                                        .addGap(64, 64, 64)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(NewPatientUILayout.createSequentialGroup()
+                                .addComponent(jLabel17)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton6))
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jComboBox29, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(463, Short.MAX_VALUE))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(NewPatientUILayout.createSequentialGroup()
+                                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel46))
+                                .addGap(18, 18, 18)
+                                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(NewPatientUILayout.createSequentialGroup()
+                                        .addComponent(jRadioButton5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton6))
+                                    .addComponent(jTextField5)
+                                    .addComponent(jTextField4)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox29, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
         NewPatientUILayout.setVerticalGroup(
             NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NewPatientUILayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1299,19 +1285,16 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton4))
                 .addGap(18, 18, 18)
-                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addGap(30, 30, 30)
-                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel16)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(NewPatientUILayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel17))
+                    .addGroup(NewPatientUILayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -1333,8 +1316,8 @@ public class MainUI extends javax.swing.JFrame {
                 .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46)
                     .addComponent(jComboBox29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(NewPatientUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
@@ -1518,6 +1501,7 @@ public class MainUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -1551,35 +1535,8 @@ public class MainUI extends javax.swing.JFrame {
         OptionsPatients();
         OldPatients();
         Search();
-        refreshPatients();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    public void refreshPatients() {
-        DAOIntf di = new DAOImpl();
-        ArrayList<Patient> allPatients = di.getAllPatients();
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.setRowCount(0);
-        for(int i = 0; i < allPatients.size(); i++) {
-            Patient pasyente = allPatients.get(i);
-            Vector row = new Vector();
-            row.add(pasyente.getFullname());
-            model.addRow(row);
-        }
-    }
-    
-    public void displaySearch(String subString) {
-        DAOIntf di = new DAOImpl();
-        ArrayList<Patient> searched = di.searchPatientName(subString);
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.setRowCount(0);
-        for(int i = 0; i < searched.size(); i++) {
-            Patient pasyente = searched.get(i);
-            Vector row = new Vector();
-            row.add(pasyente.getFullname());
-            model.addRow(row);
-        }
-    }
-    
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         setCursor (Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_jLabel2MouseEntered
@@ -1872,31 +1829,32 @@ public class MainUI extends javax.swing.JFrame {
         int year = -1;
         String sex = "None";
         String address = "None";
-        String philhealth = jTextField3.getText();
+        String philhealth = jComboBox1.getSelectedItem().toString();
+        timeStamp = new SimpleDateFormat("MM-dd-YYYY HH:mm:ss").format(Calendar.getInstance().getTime());
         String physician = jTextField4.getText();
         String diagnosis = jTextField5.getText();
         String room = "None";
         String remarks = jTextArea1.getText();
         String priority = jComboBox29.getSelectedItem().toString();
         String tip = "Last Name, First Name MI.";
-        System.out.print(physician);
+        
         if(!jComboBox3.getSelectedItem().toString().equals("YYYY"))
-        year = Integer.parseInt(jComboBox3.getSelectedItem().toString());
+            year = Integer.parseInt(jComboBox3.getSelectedItem().toString());
         if(jRadioButton1.isSelected())
-        sex = "Male";
+            sex = "Male";
         else if(jRadioButton2.isSelected())
-        sex = "Female";
+            sex = "Female";
         if(jRadioButton3.isSelected())
-        address = "Manila";
+            address = "Manila";
         else if (jRadioButton4.isSelected())
-        address = "Other";
+            address = "Other";
         if(jRadioButton5.isSelected())
-        room = "MICU";
+            room = "MICU";
         else if (jRadioButton6.isSelected())
-        room = "Ward";
+            room = "Ward";
 
         if(!jTextField2.getText().isEmpty() && year != -1 && !sex.equals("None") && !address.equals("None") &&
-            !jTextField3.getText().isEmpty() && !jTextField4.getText().isEmpty() && !jTextField5.getText().isEmpty() &&
+            !jTextField4.getText().isEmpty() && !jTextField5.getText().isEmpty() &&
             !room.equals("None") && !jTextArea1.getText().isEmpty()){
 
             if(name.matches("[a-zA-Z.Ññé, -]+") && physician.matches("[a-zA-Z.Ññé, -]+")){
@@ -1991,9 +1949,9 @@ public class MainUI extends javax.swing.JFrame {
                 if(!warnPhysician.equals("")){
                     warn += warnPhysician + "\n";
                 }
-                
-                warn += "\nPlease be guided that:\n" + tip + "\n";
+             
                 JOptionPane.showMessageDialog(null,warn);
+                
             }
         }
 
@@ -2061,7 +2019,6 @@ public class MainUI extends javax.swing.JFrame {
                 st += st8 + "\n";
             }
             
-            st += "\nPlease be guided that:\n" + tip + "\n";
             JOptionPane.showMessageDialog(null,st);
         }
 
@@ -2093,22 +2050,8 @@ public class MainUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         timeStamp = new SimpleDateFormat("MM-dd-YYYY HH:mm:ss").format(Calendar.getInstance().getTime());
-        System.out.print(timeStamp);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
-        
-    }//GEN-LAST:event_jTextField6KeyPressed
-
-    private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
-        displaySearch(jTextField6.getText());
-    }//GEN-LAST:event_jTextField6KeyReleased
-
-    
     
     /**
      * @param args the command line arguments
@@ -2158,6 +2101,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel SearchUI;
     private javax.swing.JPanel Today;
     private javax.swing.JPanel TodayUI;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox10;
     private javax.swing.JComboBox jComboBox11;
@@ -2169,7 +2113,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox17;
     private javax.swing.JComboBox jComboBox18;
     private javax.swing.JComboBox jComboBox19;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox20;
     private javax.swing.JComboBox jComboBox21;
     private javax.swing.JComboBox jComboBox22;
@@ -2182,22 +2125,14 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox29;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox30;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JComboBox jComboBox7;
-    private javax.swing.JComboBox jComboBox8;
-    private javax.swing.JComboBox jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -2258,12 +2193,10 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
