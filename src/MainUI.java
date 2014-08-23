@@ -1913,7 +1913,7 @@ public class MainUI extends javax.swing.JFrame {
                 p.setDiagnosis(diagnosis);
                 p.setRoom(room);
                 p.setRemarks(remarks);
-                p.setPrioritylevel(priority);
+                p.setPriority(priority);
                 
                 int j = 0;
                 for(int i = 0; i < allPatients.size(); i++) {
@@ -1945,7 +1945,7 @@ public class MainUI extends javax.swing.JFrame {
                     if(p.getRemarks().equalsIgnoreCase(allPatients.get(i).getRemarks())){
                         j++;
                     }
-                    if(p.getPrioritylevel().equalsIgnoreCase(allPatients.get(i).getPrioritylevel())){
+                    if(p.getPriority().equalsIgnoreCase(allPatients.get(i).getPriority())){
                         j++;
                     }
                     if (j == 10){

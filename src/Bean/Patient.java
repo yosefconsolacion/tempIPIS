@@ -19,12 +19,11 @@ public class Patient {
     private String sex;
     private String address;
     private String philhealth;
-    private String dateAdmitted;
+    private Calendar dateAdmitted;
     private String physician;
     private String diagnosis;
     private String room;
     private String remarks;
-    private String prioritylevel;
 
     
     public int getPatientid() {
@@ -96,12 +95,12 @@ public class Patient {
     }
 
     
-    public String getDateAdmitted() {
+    public Calendar getDateAdmitted() {
         return dateAdmitted;
     }
 
     
-    public void setDateAdmitted(String dateAdmitted) {
+    public void setDateAdmitted(Calendar dateAdmitted) {
         this.dateAdmitted = dateAdmitted;
     }
 
@@ -144,13 +143,4 @@ public class Patient {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-
-    public String getPrioritylevel() {
-        return prioritylevel;
-    }
-
-    public void setPrioritylevel(String prioritylevel) {
-        this.prioritylevel = prioritylevel;
-    }
-    
 }
