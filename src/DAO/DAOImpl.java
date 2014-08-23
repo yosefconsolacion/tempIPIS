@@ -41,7 +41,7 @@ public class DAOImpl implements DAOIntf {
             ps.setString(9, p.getDiagnosis());
             ps.setString(10, p.getRoom());
             ps.setString(11, p.getRemarks());
-            ps.setString(12, p.getPriority());
+            ps.setString(12, p.getPrioritylevel());
             
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -88,7 +88,7 @@ public class DAOImpl implements DAOIntf {
                 p.setDiagnosis(rs.getString(10));
                 p.setRoom(rs.getString(11));
                 p.setRemarks(rs.getString(12));
-                p.setPriority(rs.getString(13));
+                p.setPrioritylevel(rs.getString(13));
                 
                 lahatPatient.add(p);
             }
@@ -123,7 +123,7 @@ public class DAOImpl implements DAOIntf {
                 p.setDiagnosis(rs.getString(10));
                 p.setRoom(rs.getString(11));
                 p.setRemarks(rs.getString(12));
-                p.setPriority(rs.getString(13));
+                p.setPrioritylevel(rs.getString(13));
             }
             
             return p;
@@ -151,7 +151,7 @@ public class DAOImpl implements DAOIntf {
             ps.setString(9, newData.getDiagnosis());
             ps.setString(10, newData.getRoom());
             ps.setString(11, newData.getRemarks());
-            ps.setString(12, newData.getPriority());
+            ps.setString(12, newData.getPrioritylevel());
             ps.setInt(13, newData.getPatientid());
             
             ps.executeUpdate();
