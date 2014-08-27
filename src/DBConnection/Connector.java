@@ -17,26 +17,25 @@ import java.io.*;
  * @author Jeffrey
  */
 public class Connector {
-    
+
     private String username = "";
     private String password = "";
     private String url = "jdbc:mysql://localhost:3306/orangedb";	// please insert db name here, and modify port if needed
     private String driver = "com.mysql.jdbc.Driver";
-    
-    // init code
+// init code
+
     public Connector() {
         Scanner sc = null;
         try {
             File f = new File("auth.txt");
-//            System.out.println("f = " + f.getAbsolutePath());
+// System.out.println("f = " + f.getAbsolutePath());
             sc = new Scanner(f);
             username = sc.nextLine();
             password = sc.nextLine();
-//            System.out.println("u = " + username);
-//            System.out.println("p = " + password);
-            
+// System.out.println("u = " + username);
+// System.out.println("p = " + password);
             sc.close();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("You did not edit the auth.txt file");
         }
@@ -52,7 +51,6 @@ public class Connector {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return null;
     }
 }

@@ -23,5 +23,5 @@ public interface DAOIntf {
     
     public void editPatient(int id, Patient newData);
     
-    public ArrayList<Patient> searchPatientName(String subStr);
+    public ArrayList<Patient> censusDaily(String dateAdm);
 }
